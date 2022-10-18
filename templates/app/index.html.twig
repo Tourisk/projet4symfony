@@ -1,20 +1,152 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AppController!{% endblock %}
+{% block title %}Bienvenue chez HotelHouse{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<hr>
+<center class="container row">
+    <div class="row col-12">
+        <div class="col-lg-4">
+            <img src="{{ 'image/chambre.png' }}" alt="" class="rounded-circle" style="width: 250px; height: 250px;">
+            <h3><b>Chambre</b></h3>
+            <p>Venez découvrir nos chambres pour votre plus grand confort !</p>
+            <a href="{{ path('chambre') }}" class="btn btn-secondary">Découvrir les chambres</a>
+        </div>
+        <div class="col-lg-4">
+            <img src="{{ 'image/restaurant.png' }}" alt="" class="rounded-circle" style="width:250px; height:250px;">
+            <h3><b>Restaurant</b></h3>
+            <p>Nos plats sont confectionnés à la minute par notre chef cuisinier chaque jour.</p>
+            <a href="{{ path('restaurant') }}" class="btn btn-secondary">Voir la carte</a>
+        </div>
+        <div class="col-lg-4">
+            <img src="{{ 'image/spa.png' }}" alt="" class="rounded-circle" style="width:250px; height:250px;">
+            <h3><b>Spa</b></h3>
+            <p>Détendez-vous et offez vous un massage dont vous vous rappellrez longtemps.</p>
+            <a href="{{ path('spa') }}" class="btn btn-secondary">Les soins</a>
+        </div>
+    </div>
+</center>
+<hr>
+<div class="accordion" id="accordionExample">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+  <div class="accordion-item" id="reservation">
+    <h2 class="accordion-header" id="headingTwo">
+      <div class="container">
+            {% for label, msgs in app.flashes %}
+            {% for msg in msgs %}
+            <div class="alert alert-{{ label }} text-center">
+                {{ msg }}
+            </div>
+            {% endfor %}
+        {% endfor %}
+          </div>
+      <a href="#ici"><button id="ici" class="accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <b>Réserver une chambre !!! 
+        <blink id="blink">CLIQUE ICI
+        <style>
+          #blink {
+          animation: blink 1s infinite;
+          }
+          @keyframes blink { 
+            0% { opacity:0; }
+            50% { opacity:1; } 
+            100% { opacity:0; }
+          }
+        </style>
+        </blink> ♪
+        </b>
+      </button></a>
+    </h2>
+    <div id="collapseTwo" class="accordion collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      <div class="container align-content-center col-8 ">
+      <center><b>Veuillez remplir les champs</b></center>
+        {{ form_start(form) }}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/projet4symfony/src/Controller/AppController.php'|file_link(0) }}">src/Controller/AppController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/projet4symfony/templates/app/index.html.twig'|file_link(0) }}">templates/app/index.html.twig</a></code></li>
-    </ul>
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.telephone) }}
+        {{ form_row(form.email) }}
+
+
+        {{ form_row(form.chambre) }}
+        {{ form_row(form.date_arrivee) }}
+        {{ form_row(form.date_depart) }}
+
+
+        <button type="submit" class="btn btn-secondary col-12">Réserver à ces dates</button>
+
+        {{ form_end(form) }}
+          
+      </div>
+      </div>
+    </div>
+  </div><hr>
+
 </div>
+
+<div class="container row mt-5" id="plan">
+  <center><h1>Architecture du site</h1></center><hr>
+  <div class="col-6">
+  <ul class="list-group"><ul>
+    <li><b>Accueil</b><a href="{{ path('app_app') }}"> – page d'accueil du site présentant l'Hôtel</a></li>
+    <br><hr>
+    <li><b>Chambre</b><a href="{{ path('chambre') }}"> – page listant toutes les gammes de chambres avec formulaire de réservation</li>
+      <ul><ul></a>
+        <li>Classique – section présentant la gamme de « chambre classique »</li>
+        <li>Confort – section présentant la gamme de « chambre confort »</li>
+        <li>Suite – section présentant la gamme de « suite »</li>
+      </ul></ul>
+      <br><hr>
+    <li><b>Restaurant</b><a href="{{ path('restaurant') }}"> – page présentant le restaurant</a></li>
+      <ul><ul>
+        <li>Carte Brasserie – carte du midi</li>
+        <li>Carte Dégustation – carte de l’après-midi</li>
+        <li>Carte Restaurant – carte du soir</li>
+      </ul></ul>
+      <br><hr>
+    <li><b>Le Spa</b><a href="{{ path('spa') }}"> – page présentant le SPA</a></li>
+      <ul><ul>
+        <li>Spa avec soin Détente – fiche soin</li>
+        <li>Spa avec soin Relaxant – fiche soin</li>
+        <li>Spa avec soin Plaisir – fiche soin</li>
+      </ul></ul>
+      <br><hr>
+    <li><b>Avis</b> – page affichant les derniers commentaires laissés sur le site ainsi qu’un formulaire permettant de s’exprimer</li>
+  </ul></ul>
+  </div>
+  <div class="col-6">
+
+  <ul class="list-group"><ul>
+    <li><b>L'hôtel</b></li>
+        <ul><ul>
+        <li>Qui sommes-nous ? – page comprenant l’historique de la société</li>
+        <li>Accès – page avec un plan (GoogleMap)</li>
+        <li>Contact<a href="{{ path('contact') }}"> – page composée d’un formulaire de contact</a></li>
+      </ul></ul>
+    <br><hr>
+      <li><b>Actualités</b><a href="{{ path('actualites') }}"> – page de brèves listant les 15 dernières actualités du secteur Hôtelier.</a></li>
+    <br><hr>
+    <li><b>Contact</b><a href="{{ path('contact') }}"> – page composée d’un formulaire de contact (il s’agit de la même page que Hôtel/Contact)</a></li>
+    <br><hr>
+    <li><b>Liens divers</b></li>
+      <ul><ul>
+        <li>Mentions Légales – page de texte</li>
+        <li>Conditions Générales de Vente – page de texte</li>
+        <li>Plan du site <a href="#plan"> – Listing de l’architecture du site</a></li>
+        <li>Imprimer la page – Lien</li>
+        <li>S’inscrire à la newsletter – page permettant l’’abonnement à la newsletter</li>
+        <li>Partage – proposer le partage avec un ami ou sur les réseaux sociaux.</li>
+      </ul></ul>
+      <br><hr>
+    <li><b>Options</b></li>
+      <ul><ul>
+        <li>Choisir la langue (Français ou Anglais)</li>
+        <li><a href="#ici">Réservation direct !</a></li>
+    </ul></ul>
+  </ul></ul>
+  </div>
+</div>
+
+
 {% endblock %}
