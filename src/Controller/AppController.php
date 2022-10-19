@@ -139,5 +139,13 @@ public function legal(SliderRepository $repo)
     'photos' => $photos
 ]);
 }
-
+//---------------------------------------------------------------------------------------------------------------------------------------
+#[Route("/plan", name:"plan")]
+public function plan(SliderRepository $repo)
+{    
+    $photos=$repo->findAll();
+  return $this->renderForm('app/view/plan.html.twig', [
+    'photos' => $photos
+]);
+}
 }

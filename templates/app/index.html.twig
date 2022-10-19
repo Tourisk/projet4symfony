@@ -28,67 +28,7 @@
 </center>
 <hr>
 
-<div class="container row mt-5 col-12" id="plan">
-  <center><h1>Architecture du site</h1></center><hr>
-  <div class="col-lg-6">
-  <ul class="list-group"><ul>
-    <li><b>Accueil</b><a href="{{ path('app_app') }}"> – page d'accueil du site présentant l'Hôtel</a></li>
-    <br><hr>
-    <li><b>Chambre</b><a href="{{ path('chambre') }}#room"> – page listant toutes les gammes de chambres avec formulaire de réservation</li>
-      <ul><ul></a>
-        <li>Classique – section présentant la gamme de « chambre classique »</li>
-        <li>Confort – section présentant la gamme de « chambre confort »</li>
-        <li>Suite – section présentant la gamme de « suite »</li>
-      </ul></ul>
-      <br><hr>
-    <li><b>Restaurant</b><a href="{{ path('restaurant') }}#resto"> – page présentant le restaurant</a></li>
-      <ul><ul>
-        <li>Carte Brasserie – carte du midi</li>
-        <li>Carte Dégustation – carte de l’après-midi</li>
-        <li>Carte Restaurant – carte du soir</li>
-      </ul></ul>
-      <br><hr>
-    <li><b>Le Spa</b><a href="{{ path('spa') }}#spa"> – page présentant le SPA</a></li>
-      <ul><ul>
-        <li>Spa avec soin Détente – fiche soin</li>
-        <li>Spa avec soin Relaxant – fiche soin</li>
-        <li>Spa avec soin Plaisir – fiche soin</li>
-      </ul></ul>
-      <br><hr>
-    <li><b>Avis</b> – page affichant les derniers commentaires laissés sur le site ainsi qu’un formulaire permettant de s’exprimer</li>
-  </ul></ul>
-  </div>
-  <div class="col-lg-6">
-  <ul class="list-group"><ul>
-    <li><b>L'hôtel</b></li>
-        <ul><ul>
-        <li>Qui sommes-nous ? – page comprenant l’historique de la société</li>
-        <li>Accès – page avec un plan (GoogleMap)</li>
-        <li>Contact<a href="{{ path('contact') }}#contact"> – page composée d’un formulaire de contact</a></li>
-      </ul></ul>
-    <br><hr>
-      <li><b>Actualités</b><a href="{{ path('actualites') }}#actu"> – page de brèves listant les 15 dernières actualités du secteur Hôtelier.</a></li>
-    <br><hr>
-    <li><b>Contact</b><a href="{{ path('contact') }}#contact"> – page composée d’un formulaire de contact (il s’agit de la même page que Hôtel/Contact)</a></li>
-    <br><hr>
-    <li><b>Liens divers</b></li>
-      <ul><ul>
-        <li>Mentions Légalesa<a href="{{ path('legal') }}#mention"> – page de texte</a></li>
-        <li>Conditions Générales de Vente<a href="{{ path('cgu') }}#cgu"> – page de texte</a></li>
-        <li>Plan du site <a href="#plan"> – Listing de l’architecture du site</a></li>
-        <li>Imprimer la page – Lien</li>
-        <li>S’inscrire à la newsletter – page permettant l’’abonnement à la newsletter</li>
-        <li>Partage – proposer le partage avec un ami ou sur les réseaux sociaux.</li>
-      </ul></ul>
-      <br><hr>
-    <li><b>Options</b></li>
-      <ul><ul>
-        <li>Choisir la langue (Français ou Anglais)</li>
-        <li><a href="{{ path('reservation') }}#ici">Réservation direct !</a></li>
-    </ul></ul>
-  </ul></ul>
-  </div>
-</div>
+
 
 
 {% endblock %}

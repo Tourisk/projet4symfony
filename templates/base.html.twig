@@ -50,7 +50,7 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse bg-transparent text-dark" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 shadow bg-light bg-opacity-50">
                         <li class="nav-item"><a class="nav-link" href="{{ path('chambre') }}#room"><b>Chambre</b></a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ path('restaurant') }}#resto"><b>Restaurant</b></a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ path('spa') }}#spa"><b>Spa</b></a></li>
@@ -75,11 +75,11 @@
                                 <li><a class="dropdown-item" href="{{ path('cgu') }}#cgu">CGU</a></li>
                                 <li><a class="dropdown-item" href="{{ path('contact') }}#contact">Contact</a></li>       
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{{ path('app_app') }}#plan">Plan du site</a></li>
+                                <li><a class="dropdown-item" href="{{ path('plan') }}#plan">Plan du site</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <ul class="navbar-nav align-content-end">
+                    <ul class="navbar-nav align-content-end shadow bg-light bg-opacity-50">
                         {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('admin') }}"><b>BACKOFFICE</b></a>
