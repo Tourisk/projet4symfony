@@ -20,7 +20,7 @@ class SliderCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            ImageField::new('photo')->setUploadDir('public\upload')->onlyOnForms(),
+            ImageField::new('photo')->setUploadDir('public/upload')->onlyOnForms(),
             ImageField::new('photo')->setBasePath('upload')->hideOnForm(),
             NumberField::new('ordre'),
             DateTimeField::new('date_enregistrement')->setFormat("d/M/Y à H:m:s")->hideOnForm(),
