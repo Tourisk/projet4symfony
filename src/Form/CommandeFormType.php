@@ -11,7 +11,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class CommandeFormType extends AbstractType
 {
@@ -39,7 +38,7 @@ class CommandeFormType extends AbstractType
             ->add('nom', TextType::class, [
                 'label'=> 'Nom'
             ])
-            ->add('telephone', IntegerType::class, [
+            ->add('telephone', TextType::class, [
                 'label'=> 'Téléphone'
             ])
             ->add('email', EmailType::class, [
