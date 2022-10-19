@@ -2,10 +2,26 @@
 
 {% block title %}Chambre{% endblock %}
 {% block body %}
-<center id="room"><h1>Chambre</h1></center>
+<center id="room"><h1>Chambre disponible</h1></center>
+<hr>
 
-
-
+<div class="container row col-12 px-5">
+  {% for room in repo_room %}
+    <div class="col-12 text-center">
+    <h3><b>{{ room.titre }}</b></h3>
+    </div>
+    <div class="row col-8 align-content-end">
+    <p>{{ room.getDescriptionCourte|raw }}</p>
+    <p>{{ room.getDescriptionLongue|raw }}</p>
+    <p><b>Prix Journalier:</b> {{ room.getPrixJournalier()/100|number_format(2) }} €</p>
+    </div>
+    <div class="row col-4">
+    <img src="{{ ('upload/')}}{{ room.photo }}" alt="" width="200px" class="rounded-pill m-5">
+    </div>
+    <a class="btn btn-secondary col-12" href="{{ path('reservation') }}#ici"><b>Réservation</b></a>
+    <hr>
+  {% endfor %}
+</div>
 
 
 

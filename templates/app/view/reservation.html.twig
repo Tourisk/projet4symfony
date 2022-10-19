@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservation{% endblock %}
+{% block body %}
+<center id="ici"><h1>Réservation</h1></center>
+  <div class="container">
+      {% for label, msgs in app.flashes %}
+      {% for msg in msgs %}
+      <div class="alert alert-{{ label }} text-center">
+          {{ msg }}
+    </div>
+       {% endfor %}
+      {% endfor %}
+
+    </h2>
+      <div class="container align-content-center col-8 ">
+      <center><b>Veuillez remplir tous les champs</b></center>
+        {{ form_start(form) }}
+
+        {{ form_row(form.nom, {
+      label: "Nom",
+      attr: {
+        placeholder: "Votre Nom de Famille"
+      }
+    }) }}
+        {{ form_row(form.prenom, {
+      label: "Prénom",
+      attr: {
+        placeholder: "Votre Prénom"
+      }
+    }) }}
+        {{ form_row(form.telephone, {
+      label: "Téléphone",
+      attr: {
+        placeholder: "Votre numéro de Téléphone"
+      }
+    }) }}
+        {{ form_row(form.email, {
+      label: "E-mail",
+      attr: {
+        placeholder: "Votre adresse E-mail"
+      }
+    }) }}
+        {{ form_row(form.chambre) }}
+        {{ form_row(form.date_arrivee) }}
+        {{ form_row(form.date_depart) }}
+
+
+        <button type="submit" class="btn btn-secondary col-12">Réserver à ces dates</button>
+
+        {{ form_end(form) }}
+          
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Commande;
 use App\Form\CommandeFormType;
 use App\Repository\SliderRepository;
+use App\Repository\ChambreRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,8 +15,16 @@ class AppController extends AbstractController
 {
 //---------------------------------------------------------------------------------------------------------------------------------------
 #[Route("/", name:"app_app")]
+public function index(SliderRepository $repo)
+{
+    $photos=$repo->findAll();
+    return $this->renderForm('app/index.html.twig', [
+        'photos' => $photos
+    ]);
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
 #[Route("/reservation", name:"reservation")]
-public function index(SliderRepository $repo, Commande $commande = null, EntityManagerInterface $manager, Request $request)
+public function reservation(SliderRepository $repo, Commande $commande = null, EntityManagerInterface $manager, Request $request)
 {
     $photos=$repo->findAll();
     if (!$commande) {
@@ -37,23 +46,25 @@ public function index(SliderRepository $repo, Commande $commande = null, EntityM
         $commande->setPrixTotal($prixTotal);
         $manager->persist($commande);
         $manager->flush();
-        $this->addFlash('success', 'La réservation a bien été Créer !');
-        return $this->redirectToRoute('app_app');
+        $this->addFlash('success', 'La réservation a bien été valider !');
+        return $this->redirectToRoute('reservation');
     }
-    return $this->renderForm('app/index.html.twig', [
+    return $this->renderForm('app/view/reservation.html.twig', [
         'commande' => $commande,
         'photos' => $photos,
         'form' => $form
     ]);
 }
 //---------------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------
 #[Route("/chambre", name:"chambre")]
-public function chambre(SliderRepository $repo)
+public function chambre(ChambreRepository $repo_room, SliderRepository $repo)
 {
     $photos=$repo->findAll();
-    return $this->renderForm('app/view/chambre.html.twig', [
-        'photos' => $photos
+    $repo_room=$repo_room->findAll();
+    return $this->render('app/view/chambre.html.twig', [
+        'photos' => $photos,
+        'repo_room' => $repo_room
+
     ]);
 }
 //---------------------------------------------------------------------------------------------------------------------------------------
@@ -111,6 +122,22 @@ public function contact(SliderRepository $repo)
 ]);
 }
 //---------------------------------------------------------------------------------------------------------------------------------------
-
+#[Route("/cgu", name:"cgu")]
+public function cgu(SliderRepository $repo)
+{    
+    $photos=$repo->findAll();
+  return $this->renderForm('app/view/cgu.html.twig', [
+    'photos' => $photos
+]);
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
+#[Route("/legal", name:"legal")]
+public function legal(SliderRepository $repo)
+{    
+    $photos=$repo->findAll();
+  return $this->renderForm('app/view/legal.html.twig', [
+    'photos' => $photos
+]);
+}
 
 }

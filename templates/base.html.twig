@@ -26,9 +26,9 @@
             <div class="carousel-inner">
             {% for photo in photos %}
                 <div class="carousel-item {% if photo.ordre == 1 %} active {% endif %}" data-bs-interval="5000">
-                <img src="{{ asset('upload/')}}{{ photo.photo }}" class="d-block w-100" style="height:50vh; object-fit:cover;" alt="image">
+                <img src="{{ ('upload/')}}{{ photo.photo }}" class="d-block w-100" style="height:50vh; object-fit:cover;" alt="image">
             <div class="text-center carousel-caption d-none d-md-block" style="object-fit:cover;">
-            <a href="#" class="btn btn-secondary mb-5"><b>HotelHouse</b> | Découvrez nos chambres</a>
+            <a href="{{ path('chambre') }}#room" class="btn btn-secondary mb-5"><b>HotelHouse</b> | Découvrez nos chambres</a>
             </div>
                 </div>
             {% endfor %}
@@ -54,11 +54,30 @@
                         <li class="nav-item"><a class="nav-link" href="{{ path('chambre') }}#room"><b>Chambre</b></a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ path('restaurant') }}#resto"><b>Restaurant</b></a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ path('spa') }}#spa"><b>Spa</b></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ path('app_app') }}#ici"><b>Réservation</b></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ path('avis') }}#avis"><b>Avis</b></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ path('hotel') }}#hotel"><b>L'Hôtel</b></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ path('actualites') }}#actu"><b>Actualités</b></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ path('contact') }}#contact"><b>Contact</b></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('reservation') }}#ici"><b>Réservation</b></a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <b>l'Hôtel</b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ path('hotel') }}#hotel">L'Hôtel</a></li>
+                                <li><a class="dropdown-item" href="{{ path('avis') }}#avis">Avis</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{{ path('actualites') }}#actu">Actualités</a></li>                                
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <b>Contact</b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ path('legal') }}#mention">Mentions Légales</a></li>
+                                <li><a class="dropdown-item" href="{{ path('cgu') }}#cgu">CGU</a></li>
+                                <li><a class="dropdown-item" href="{{ path('contact') }}#contact">Contact</a></li>       
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{{ path('app_app') }}#plan">Plan du site</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <ul class="navbar-nav align-content-end">
                         {% if is_granted('ROLE_ADMIN') %}
@@ -91,7 +110,7 @@
         {% block body %}{% endblock %}
         {% block footer %}
         <div class="bg-light fixed-bottom bg-transparent position-relative w-100 bottom-20 start-0"><hr></div>
-        <a href="/#ici">
+        <a href="{{ path('reservation') }}#ici">
         <button id="ici" class="border border-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
         <b>Réserver une chambre !!! 
         <blink id="blink">CLIQUE ICI
