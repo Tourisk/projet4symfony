@@ -37,7 +37,6 @@ class Commande
     private ?string $nom = null;
 
     #[ORM\Column]
-    #[Assert\Regex(pattern:"/^0[1-9{1}][0-9]{8}$/", message:"Bizarre ce numéro de téléphone.")] 
     #[Assert\NotBlank(message:"Ce champ ne peut pas être vide.")]
     private ?int $telephone = null;
 
