@@ -37,7 +37,7 @@
     <li><b>L'hôtel</b></li>
         <ul><ul>
         <li>Qui sommes-nous ? – page comprenant l’historique de la société</li>
-        <li>Accès – page avec un plan (GoogleMap)</li>
+        <li>Accès<a href="{{ path('hotel') }}#hotel"> – page avec un plan (GoogleMap)</a></li>
         <li>Contact<a href="{{ path('contact') }}#contact"> – page composée d’un formulaire de contact</a></li>
       </ul></ul>
     <br><hr>
@@ -50,14 +50,14 @@
         <li>Mentions Légalesa<a href="{{ path('legal') }}#mention"> – page de texte</a></li>
         <li>Conditions Générales de Vente<a href="{{ path('cgu') }}#cgu"> – page de texte</a></li>
         <li>Plan du site <a href="{{ path('legal') }}#plan"> – Listing de l’architecture du site</a></li>
-        <li>Imprimer la page – Lien</li>
+        <li>Imprimer la page<a href="#" OnClick="javascript:window.print()"> – Lien</a></li>
         <li>S’inscrire à la newsletter – page permettant l’’abonnement à la newsletter</li>
         <li>Partage – proposer le partage avec un ami ou sur les réseaux sociaux.</li>
       </ul></ul>
       <br><hr>
     <li><b>Options</b></li>
       <ul><ul>
-        <li>Choisir la langue (Français ou Anglais)</li>
+        <li>Choisir la langue (<img src="image/france.png" alt="" width="20px"> ou <img src="image/royaume-uni.png" alt="" width="20px">)</li>
         <li><a href="{{ path('reservation') }}#ici">Réservation direct !</a></li>
     </ul></ul>
   </ul></ul>
